@@ -5,14 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GrepGUI"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:vm="clr-namespace:GrepGUI.ViewModels"
         mc:Ignorable="d"
         SaveWindowPosition ="True"
         GlowBrush="{DynamicResource AccentColorBrush}"
         BorderThickness="1"
         Title="MainWindow" Height="600" Width="800">
+    <Controls:MetroWindow.DataContext>
+        <vm:MainWindowViewModel/>
+    </Controls:MetroWindow.DataContext>
     <TabControl>
         <TabItem Header="検索">
-            <TextBlock Text="検索" />
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="40"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="検索ディレクトリ" VerticalAlignment="Center"/>
+                    <TextBox Grid.Column="1" Controls:TextBoxHelper.Watermark="検索ディレクトリ" Text="{Binding FolderPath.Value}"/>
+                    <Button Grid.Column="2" Width="30" Height="30" Style="{DynamicResource SquareButtonStyle}" Command="{Binding FolderOpenCommand}">
+                        <StackPanel Orientation="Vertical">
+                            <Rectangle Width="25" Height="25">
+                                <Rectangle.Fill>
+                                    <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_folder_open}" />
+                                </Rectangle.Fill>
+                            </Rectangle>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+            </Grid>
         </TabItem>
         <TabItem Header="検索と置換">
             <TextBlock Text="検索と置換" />
