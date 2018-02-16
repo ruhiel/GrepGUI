@@ -26,19 +26,37 @@
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="8*"/>
                         <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="40"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="検索ディレクトリ" VerticalAlignment="Center"/>
                     <TextBox Grid.Column="1" Controls:TextBoxHelper.Watermark="検索ディレクトリ" Text="{Binding FolderPath.Value}"/>
                     <Button Grid.Column="2" Width="30" Height="30" Style="{DynamicResource SquareButtonStyle}" Command="{Binding FolderOpenCommand}">
                         <StackPanel Orientation="Vertical">
-                            <Rectangle Width="25" Height="25">
+                            <Rectangle Width="20" Height="20">
                                 <Rectangle.Fill>
                                     <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_folder_open}" />
                                 </Rectangle.Fill>
                             </Rectangle>
                         </StackPanel>
                     </Button>
+                    <Button Grid.Column="3" Width="30" Height="30" Style="{DynamicResource SquareButtonStyle}" Command="{Binding SearchCommand}">
+                        <StackPanel Orientation="Vertical">
+                            <Rectangle Width="20" Height="20">
+                                <Rectangle.Fill>
+                                    <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_page_search}" />
+                                </Rectangle.Fill>
+                            </Rectangle>
+                        </StackPanel>
+                    </Button>
                 </Grid>
+                <DataGrid Grid.Row="1" AutoGenerateColumns="False" ItemsSource="{Binding FileInfoList}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ファイル名" Binding="{Binding FileName}"/>
+                        <DataGridTextColumn Header="場所" Binding="{Binding FilePath}"/>
+                        <DataGridTextColumn Header="行" Binding="{Binding Line}"/>
+                        <DataGridTextColumn Header="文字列" Binding="{Binding String}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
             </Grid>
         </TabItem>
         <TabItem Header="検索と置換">

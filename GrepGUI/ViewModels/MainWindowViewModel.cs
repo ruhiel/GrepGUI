@@ -1,4 +1,5 @@
-﻿using Microsoft.WindowsAPICodePack.Dialogs;
+﻿using GrepGUI.Models;
+using Microsoft.WindowsAPICodePack.Dialogs;
 using Reactive.Bindings;
 using Reactive.Bindings.Extensions;
 using System;
@@ -19,7 +20,11 @@ namespace GrepGUI.ViewModels
 
         public ReactiveCommand FolderOpenCommand { get; } = new ReactiveCommand();
 
+        public ReactiveCommand SearchCommand { get; } = new ReactiveCommand();
+
         public ReactiveProperty<string> FolderPath { get; }
+
+        public DispatchObservableCollection<FileInfo> FileInfoList { get; } = new DispatchObservableCollection<FileInfo>();
 
         public MainWindowViewModel()
         {
@@ -35,6 +40,11 @@ namespace GrepGUI.ViewModels
                 {
                     FolderPath.Value = dlg.FileName;
                 }
+            });
+
+            SearchCommand.Subscribe(_ =>
+            {
+                FileInfoList.AddRange(FileSearcher.Search(FolderPath.Value, null));
             });
         }
 
