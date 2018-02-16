@@ -6,8 +6,28 @@
         xmlns:local="clr-namespace:GrepGUI"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        SaveWindowPosition ="True"
+        GlowBrush="{DynamicResource AccentColorBrush}"
+        BorderThickness="1"
+        Title="MainWindow" Height="600" Width="800">
+    <TabControl>
+        <TabItem Header="検索">
+            <TextBlock Text="検索" />
+        </TabItem>
+        <TabItem Header="検索と置換">
+            <TextBlock Text="検索と置換" />
+        </TabItem>
+        <TabItem Header="行削除">
+            <TextBlock Text="行削除" />
+        </TabItem>
+        <TabItem Header="文字コード変換">
+            <TextBlock Text="文字コード変換" />
+        </TabItem>
+        <TabItem Header="インデント変換">
+            <TextBlock Text="インデント変換" />
+        </TabItem>
+        <TabItem Header="行末Trim">
+            <TextBlock Text="行末Trim" />
+        </TabItem>
+    </TabControl>
 </Controls:MetroWindow>
