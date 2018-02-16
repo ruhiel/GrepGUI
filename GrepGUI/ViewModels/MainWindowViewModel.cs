@@ -27,7 +27,7 @@ namespace GrepGUI.ViewModels
 
             FolderOpenCommand.Subscribe(_ =>
             {
-                var dlg = new CommonOpenFileDialog("保存フォルダ選択");
+                var dlg = new CommonOpenFileDialog("検索ディレクトリ選択");
                 // フォルダ選択モード。
                 dlg.IsFolderPicker = true;
                 var ret = dlg.ShowDialog();

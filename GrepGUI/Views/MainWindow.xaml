@@ -10,7 +10,7 @@
         SaveWindowPosition ="True"
         GlowBrush="{DynamicResource AccentColorBrush}"
         BorderThickness="1"
-        Title="MainWindow" Height="600" Width="800">
+        Title="GrepGUI" Height="600" Width="800">
     <Controls:MetroWindow.DataContext>
         <vm:MainWindowViewModel/>
     </Controls:MetroWindow.DataContext>
